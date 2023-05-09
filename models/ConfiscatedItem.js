@@ -5,8 +5,10 @@ const ConfiscatedItem = new mongoose.Schema({
     fine: String,
     address: String,
     image: String,
-    date: String,
-    time: String,
+    date_time : {
+        type: Date,
+        default: Date.now
+    }
 });
 
 module.exports = mongoose.model("ConfiscatedItem", ConfiscatedItem);

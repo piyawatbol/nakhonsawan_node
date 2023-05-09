@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const Notify = new mongoose.Schema({
     uid : String,
     first_name : String,
@@ -13,8 +14,10 @@ const Notify = new mongoose.Schema({
     level: String,
     notify_detail: String,
     image: Array,
-    date: String,
-    time: String,
+    date_time : {
+        type: Date,
+        default: Date.now
+    }
 });
 
 module.exports = mongoose.model("Notify", Notify);

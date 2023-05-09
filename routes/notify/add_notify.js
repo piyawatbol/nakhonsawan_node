@@ -4,6 +4,8 @@ const Notify = require("../../models/Notify");
 const multer = require("multer");
 const path = require("path");
 
+
+
 const storage = multer.diskStorage({
   destination: "./images/notify",
   filename: (req, file, cb) => {
@@ -18,13 +20,6 @@ const upload = multer({
 });
 
 router.post("/", async (req, res) => {
-  var currentdate = new Date();
-  const date = `${currentdate.getDate()}/${
-    currentdate.getMonth() + 1
-  }/${currentdate.getFullYear()}`;
-  const time = `${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
-  req.body.date = date;
-  req.body.time = time;
   try {
     const data = await Notify.create(req.body);
     res.status(200).send(data);

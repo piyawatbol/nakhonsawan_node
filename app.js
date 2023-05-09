@@ -33,11 +33,14 @@ app.use('/repassword', require("./routes/forget_password/repassword"));
 
 //notify
 app.use('/add_notify', require("./routes/notify/add_notify"));
+
 app.use('/history_notify', require("./routes/notify/history_notify"));
 
 //appeal
 app.use('/add_appeal', require("./routes/appeal/add_appeal"));
+app.use('/comment_appeal', require("./routes/appeal/comment_appeal"));
 app.use('/history_appeal', require("./routes/appeal/history_appeal"));
+app.use('/reply_appeal', require("./routes/appeal/reply_appeal"));
 
 //municipal
 app.use('/get_municipal_head', require("./routes/municipal/get_municipal_head"));
@@ -51,6 +54,10 @@ app.use('/edit_user',require("./routes/users/edit_user"));
 //confiscated
 app.use('/confiscated',require("./routes/confiscated/confiscated"));
 
+//journal
+
+app.use('/get_journal_head',require("./routes/journal/get_journal_head"));
+app.use('/get_journal',require("./routes/journal/get_journal"));
 
 app.use("/image",express.static(path.join(__dirname,'images')))
 

@@ -7,8 +7,10 @@ const MunicipalForm = new mongoose.Schema({
   last_name: String,
   id_card: String,
   file : Array,
-  date: String,
-  time: String,
+  date_time : {
+    type: Date,
+    default: Date.now
+  }
 });
 
 module.exports = mongoose.model("MunicipalForm", MunicipalForm);
