@@ -17,6 +17,4 @@ router.get("/:id/:status", async (req, res) => {
   }
 });
 
-
-
 module.exports = router
