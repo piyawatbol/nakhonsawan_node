@@ -16,11 +16,11 @@ router.post("/", async (req, res) => {
    
     
     if(check_email){
-      return res.status(409).send("Email has already been used");
+      return res.status(401).send("Email has already been used");
     }  else if(check_phone){
-      return res.status(409).send("Phone has already been used");
+      return res.status(401).send("Phone has already been used");
     } else if(check_id_card){
-      return res.status(409).send("Id Card has already been used");
+      return res.status(401).send("Id Card has already been used");
     }  
     const user = await Users.create({
       first_name,
