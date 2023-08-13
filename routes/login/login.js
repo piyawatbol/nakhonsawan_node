@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
       if (user && (await bcrypt.compare(password, user.password))) {
         const token = jwt.sign(
           { user_id: user._id, email },
-          process.env.TOKEN_KEY,
+          'qwertyuiop',
           { expiresIn: "1d" }
         );
         user.token = token;
@@ -47,7 +47,7 @@ router.post("/", async (req, res) => {
 
         const token = jwt.sign(
           { user_id: user._id, email },
-          process.env.TOKEN_KEY,
+          'qwertyuiop',
           { expiresIn: "1d" }
         );
 
@@ -57,7 +57,7 @@ router.post("/", async (req, res) => {
       } else { 
         const token = jwt.sign(
           { user_id: user._id, email },
-          process.env.TOKEN_KEY,
+          'qwertyuiop',
           { expiresIn: "1d" }
         );
         user.token = token;

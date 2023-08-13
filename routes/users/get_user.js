@@ -15,7 +15,7 @@ router.get("/", auth,async (req, res) => {
 
     const token = jwt.sign(
       { user_id: user._id, email: user.email },
-      process.env.TOKEN_KEY,
+      'qwertyuiop',
       { expiresIn: "1d" }
     );
 

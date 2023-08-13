@@ -4,7 +4,7 @@ const {MONGO_URI} = process.env
 
 
 exports.connect = () => {
-    mongoose.connect(MONGO_URI,{
+    mongoose.connect('mongodb+srv://piyawatbol:1234@cluster0.dovzycy.mongodb.net/nakornsawan?retryWrites=true&w=majority',{
         useNewUrlParser : true,
         useUnifiedTopology: true,
         // useCreateIndex: true,
