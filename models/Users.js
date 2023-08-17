@@ -11,6 +11,6 @@ const UsersSchema = new mongoose.Schema({
   user_img: String,
   token: String,
   login_type: String,
-});
+},{timestamps : true});
 
 module.exports = mongoose.model("User", UsersSchema);

@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Users = require("../../models/Users");
-const auth = require("../../middleware/auth")
+const auth = require("../../middleware/auth");
 const jwt = require("jsonwebtoken");
 
-router.get("/", auth,async (req, res) => {
+router.get("/", auth, async (req, res) => {
   const userId = req.user.user_id;
   console.log(userId);
   try {
@@ -21,12 +21,10 @@ router.get("/", auth,async (req, res) => {
 
     user.token = token;
     // console.log(user);
-    res.send({data:user});
+    res.send({ data: user });
   } catch (err) {
     console.log(err);
   }
 });
 
-
-
-module.exports = router
+module.exports = router;

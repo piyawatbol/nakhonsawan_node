@@ -16,7 +16,7 @@ router.post("/", auth, async (req, res) => {
       type: type,
       title: title,
       appeal_detail: appeal_detail,
-      comment: [],
+      comment: []
     });
     if (!data) {
       return res.status(401).send({ data: "error add appeal" });

@@ -1,61 +1,50 @@
 const express = require("express");
 const router = express.Router();
 const Municipal = require("../../models/Municipal");
+const auth = require("../../middleware/auth");
 
-router.get("/", async (req, res) => {
+//all
+router.get("/all", auth, async (req, res) => {
   try {
     const data = await Municipal.find({});
     if (!data) {
       return res.status(401).send("error");
     }
-    res.send(data);
+    res.send({ data: data });
   } catch (err) {
     console.log(err);
   }
 });
 
-router.get("/filter/:head", async (req, res) => {
+// get title by head
+router.get("/title/search/:head", auth, async (req, res) => {
+  console.log(req.params.head);
+  try {
+    const data = await Municipal.find({
+      title: { $regex: req.params.head, $options: "i" },
+    });
+    if (data.length <= 0) {
+      return res.status(400).send("not have");
+    }
+    console.log(`data ${data}`);
+    res.send({ data: data });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/title/:head", auth, async (req, res) => {
+  console.log(req.params.head);
   try {
     const data = await Municipal.find({agency : req.params.head});
-    if (!data) {
-      return res.status(401).send("error");
+    if (data.length <= 0) {
+      return res.status(400).send("not have");
     }
-    res.send(data);
+    console.log(`data ${data}`);
+    res.send({ data: data });
   } catch (err) {
     console.log(err);
   }
 });
 
-router.get("/:title", async (req, res) => {
-  try {
-    const data = await Municipal.find({title : {$regex: `${req.params.title}`}});
-    if (!data) {
-      return res.status(401).send("error");
-    }
-    res.send(data);
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-
-
-
-
-//add title
-
-router.post("/", async (req, res) => {
-    try {
-      const data = await Municipal_Title.create(req.body);
-      if (!data) {
-        return res.status(401).send("error");
-      }
-      res.send(data);
-    } catch (err) {
-      console.log(err);
-    }
-  });
-
-
-
-module.exports = router
+module.exports = router;

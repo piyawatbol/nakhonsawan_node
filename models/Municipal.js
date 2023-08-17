@@ -8,5 +8,4 @@ const Municipal = new mongoose.Schema({
   form_file: Array
 });
 
-
 module.exports = mongoose.model("Municipal", Municipal);

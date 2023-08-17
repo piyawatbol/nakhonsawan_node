@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const MunicipalForm = require("../../models/MunicipalForm")
+const RegisDoc = require("../../models/RegisDoc");
 const multer = require("multer");
 const path = require("path");
+const auth = require("../../middleware/auth");
 
 const storage = multer.diskStorage({
-  destination: "./images/municipal_form",
+  destination: "./images/regis_doc",
   filename: (req, file, cb) => {
     return cb(
       null,
@@ -17,29 +18,33 @@ const upload = multer({
   storage: storage,
 });
 
-router.post("/", async (req, res) => {
+router.post("/",auth, async (req, res) => {
+  const userId = req.user.user_id;
+  const { title ,} = req.body;
   try {
-    const data = await MunicipalForm.create(req.body);
+    const data = await RegisDoc.create({
+      user_id: userId,
+      title: title,
+    });
     if (!data) {
       return res.status(401).send("error");
     }
-    res.send(data);
+    res.send({id : data.id});
   } catch (err) {
     console.log(err);
   }
 });
 
-router.put("/file/:id", upload.single("file"), async (req, res) => {
+router.post("/file/:id", auth,upload.single("file"), async (req, res) => {
   const id = req.params.id;
   const file = req.file.filename;
   try {
-    const data = await MunicipalForm.findByIdAndUpdate(
+    const data = await RegisDoc.findByIdAndUpdate(
       id,
       { $push: { file: file } },
       { new: true }
     );
     res.status(200).send(data);
-    console.log(data);
   } catch (err) {
     console.log(err);
   }

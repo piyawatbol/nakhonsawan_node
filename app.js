@@ -32,17 +32,23 @@ app.use('/repassword', require("./routes/forget_password/repassword"));
 //notify
 app.use('/add_notify', require("./routes/notify/add_notify"));
 
-app.use('/history_notify', require("./routes/notify/history_notify"));
+app.use('/get_history_notify', require("./routes/notify/get_history_notify"));
 
 //appeal
 app.use('/add_appeal', require("./routes/appeal/add_appeal"));
-app.use('/comment_appeal', require("./routes/appeal/comment_appeal"));
-app.use('/history_appeal', require("./routes/appeal/history_appeal"));
-app.use('/reply_comment', require("./routes/appeal/reply_comment"));
+
+app.use('/get_history_appeal', require("./routes/appeal/get_history_appeal"));
+
 
 //municipal
 app.use('/get_municipal', require("./routes/municipal/get_municipal"));
-app.use('/add_municipal_form', require("./routes/municipal/add_municipal_form"));
+app.use('/regis_doc', require("./routes/municipal/regis_doc"));
+
+//comment
+app.use('/add_comment', require("./routes/comment/add_comment"));
+app.use('/reply_comment', require("./routes/comment/reply_comment"));
+app.use('/get_comment', require("./routes/comment/get_comment"));
+
 //user
 app.use('/get_user',require("./routes/users/get_user"));
 app.use('/edit_user',require("./routes/users/edit_user"));

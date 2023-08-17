@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 
+const Schema = mongoose.Schema;
 
 const Notify = new mongoose.Schema({
-    uid : String,
+    user_id : String,
     first_name : String,
     last_name : String,
     id_card: String,
@@ -14,10 +15,11 @@ const Notify = new mongoose.Schema({
     level: String,
     notify_detail: String,
     image: Array,
-    date_time : {
-        type: Date,
-        default: Date.now
-    }
-});
+    status: {
+        type: String,
+        enum: ["รอตรวจสอบ", "กำลังตำเนินการ", "ดำเนินการเสร็จสิ้น"],
+        default: "รอตรวจสอบ",
+      },
+},{timestamps : true});
 
 module.exports = mongoose.model("Notify", Notify);
