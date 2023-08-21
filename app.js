@@ -41,6 +41,7 @@ app.use('/get_history_appeal', require("./routes/appeal/get_history_appeal"));
 
 
 //municipal
+app.use('/add_municipal', require("./routes/municipal/add_munucipal"));
 app.use('/get_municipal', require("./routes/municipal/get_municipal"));
 app.use('/regis_doc', require("./routes/municipal/regis_doc"));
 
@@ -56,6 +57,10 @@ app.use('/edit_user',require("./routes/users/edit_user"));
 //confiscated
 app.use('/confiscated',require("./routes/confiscated/confiscated"));
 
+
+//journal
+app.use('/add_journal',require("./routes/journal/add_journal"));
+app.use('/get_journal',require("./routes/journal/get_journal"));
 
 app.use("/image",express.static(path.join(__dirname,'images')))
 
