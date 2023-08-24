@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
         const token = jwt.sign(
           { user_id: user._id, email },
           process.env.TOKEN_KEY,
-          { expiresIn: "1d" }
+          { expiresIn: "3d" }
         );
         user.token = token;
         res.status(201).send({ data: user });
@@ -48,7 +48,7 @@ router.post("/", async (req, res) => {
         const token = jwt.sign(
           { user_id: user._id, email },
           process.env.TOKEN_KEY,
-          { expiresIn: "1d" }
+          { expiresIn: "3d" }
         );
 
         user.token = token;
@@ -58,7 +58,7 @@ router.post("/", async (req, res) => {
         const token = jwt.sign(
           { user_id: user._id, email },
           process.env.TOKEN_KEY,
-          { expiresIn: "1d" }
+          { expiresIn: "3d" }
         );
         user.token = token;
         res.status(201).send({ data: user });

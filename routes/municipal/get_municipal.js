@@ -26,7 +26,7 @@ router.get("/title/search/:head", auth, async (req, res) => {
     if (data.length <= 0) {
       return res.status(400).send("not have");
     }
-    console.log(`data ${data}`);
+   
     res.send({ data: data });
   } catch (err) {
     console.log(err);
@@ -40,7 +40,6 @@ router.get("/title/:head", auth, async (req, res) => {
     if (data.length <= 0) {
       return res.status(400).send("not have");
     }
-    console.log(`data ${data}`);
     res.send({ data: data });
   } catch (err) {
     console.log(err);

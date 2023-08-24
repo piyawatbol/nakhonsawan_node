@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const Journal = new mongoose.Schema({
-  image: String,
   title: String,
-  type: String,
-  file: String,
+  detail: String,
+  type: Array,
+  image: Array,
 },{timestamps : true});
 
 module.exports = mongoose.model("Journal", Journal);

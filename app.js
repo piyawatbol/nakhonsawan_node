@@ -62,6 +62,17 @@ app.use('/confiscated',require("./routes/confiscated/confiscated"));
 app.use('/add_journal',require("./routes/journal/add_journal"));
 app.use('/get_journal',require("./routes/journal/get_journal"));
 
+//urgent
+app.use('/add_urgent_alert',require("./routes/urgent/add_urgent_alert"));
+app.use('/get_urgent_alert',require("./routes/urgent/get_urgent_alert"));
+app.use('/add_urgent_contact',require("./routes/urgent/add_urgent_contact"));
+app.use('/get_urgent_contact',require("./routes/urgent/get_urgent_contact"));
+
+//home courasel
+app.use('/add_home_courasel',require("./routes/home_courasel/add_home_courasel"));
+app.use('/get_home_courasel',require("./routes/home_courasel/get_home_courasel"));
+
+//image
 app.use("/image",express.static(path.join(__dirname,'images')))
 
 // catch 404 and forward to error handler
